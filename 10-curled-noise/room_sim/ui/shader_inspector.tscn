@@ -1,0 +1,276 @@
+[gd_scene format=3 uid="uid://b2v8g3ywn7a1p"]
+
+[ext_resource type="Script" path="res://room_sim/ui/shader_inspector.gd" id="1_insp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.05, 0.07, 0.11, 0.98)
+border_width_left = 5
+border_color = Color(1, 0.6, 0, 1)
+corner_radius_top_left = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_header"]
+bg_color = Color(0.1, 0.13, 0.2, 0.9)
+border_width_left = 4
+border_color = Color(0.2, 0.85, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 12.0
+expand_margin_top = 10.0
+expand_margin_right = 12.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_close_btn"]
+bg_color = Color(0.85, 0.2, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_section_shape"]
+bg_color = Color(0.08, 0.1, 0.16, 0.85)
+border_width_left = 4
+border_color = Color(1, 0.6, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_section_presets"]
+bg_color = Color(0.08, 0.1, 0.16, 0.85)
+border_width_left = 4
+border_color = Color(0.8, 0.5, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_section_params"]
+bg_color = Color(0.08, 0.1, 0.16, 0.85)
+border_width_left = 4
+border_color = Color(0.2, 0.85, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_reset_btn"]
+bg_color = Color(0.2, 0.25, 0.35, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.5, 0.7, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_done_btn"]
+bg_color = Color(1, 0.6, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="ShaderInspector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_insp")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -580.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Margin" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HeaderPanel" type="PanelContainer" parent="PanelContainer/Margin/VBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_header")
+
+[node name="HeaderVBox" type="VBoxContainer" parent="PanelContainer/Margin/VBox/HeaderPanel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TopRow" type="HBoxContainer" parent="PanelContainer/Margin/VBox/HeaderPanel/HeaderVBox"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="PanelContainer/Margin/VBox/HeaderPanel/HeaderVBox/TopRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.75, 0.1, 1)
+theme_override_font_sizes/font_size = 24
+text = "STATION 01 // SINE WAVES"
+
+[node name="CloseButton" type="Button" parent="PanelContainer/Margin/VBox/HeaderPanel/HeaderVBox/TopRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_close_btn")
+text = "✕"
+
+[node name="SubtitleLabel" type="Label" parent="PanelContainer/Margin/VBox/HeaderPanel/HeaderVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 17
+text = "CATLIKE CODING: PROCEDURAL GPU WAVES"
+
+[node name="DescriptionLabel" type="Label" parent="PanelContainer/Margin/VBox/HeaderPanel/HeaderVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.94, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "Procedural waves calculated per vertex/fragment with analytical normal derivatives."
+autowrap_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ScrollContent" type="VBoxContainer" parent="PanelContainer/Margin/VBox/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+
+[node name="MeshSection" type="PanelContainer" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_section_shape")
+
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent/MeshSection"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent/MeshSection/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SectionTitle" type="Label" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent/MeshSection/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.7, 0.1, 1)
+theme_override_font_sizes/font_size = 19
+text = "◈ DEMO OBJECT GEOMETRY"
+
+[node name="MeshOptionButton" type="OptionButton" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent/MeshSection/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="RotateCheckBox" type="CheckBox" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent/MeshSection/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+button_pressed = true
+text = " Auto-Rotate Sandbox Geometry"
+
+[node name="PresetsSection" type="PanelContainer" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_section_presets")
+
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent/PresetsSection"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent/PresetsSection/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SectionTitle" type="Label" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent/PresetsSection/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.6, 1, 1)
+theme_override_font_sizes/font_size = 19
+text = "◈ INSTANT EXPERIMENT PRESETS"
+
+[node name="PresetsContainer" type="HFlowContainer" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent/PresetsSection/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="ParamsSection" type="PanelContainer" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_section_params")
+
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent/ParamsSection"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent/ParamsSection/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SectionTitle" type="Label" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent/ParamsSection/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 19
+text = "◈ GPU SHADER UNIFORM CONTROLS"
+
+[node name="ControlsContainer" type="VBoxContainer" parent="PanelContainer/Margin/VBox/ScrollContainer/ScrollContent/ParamsSection/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="FooterHBox" type="HBoxContainer" parent="PanelContainer/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ResetButton" type="Button" parent="PanelContainer/Margin/VBox/FooterHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_reset_btn")
+text = "↺ RESET DEFAULTS"
+
+[node name="ResumeButton" type="Button" parent="PanelContainer/Margin/VBox/FooterHBox"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.05, 0.05, 0.08, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_done_btn")
+text = "✔ DONE (ESC)"
+
+[connection signal="pressed" from="PanelContainer/Margin/VBox/FooterHBox/ResumeButton" to="." method="_on_close_pressed"]

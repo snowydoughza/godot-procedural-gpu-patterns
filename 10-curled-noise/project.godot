@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Procedural GPU Patterns"
-run/main_scene="uid://bqhwmxvwrg7xb"
+config/name="Procedural GPU Patterns - Room Simulation"
+run/main_scene="res://room_sim/room.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

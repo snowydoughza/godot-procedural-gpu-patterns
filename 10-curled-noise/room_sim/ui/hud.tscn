@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://c6r8m2y1d4p1q"]
+
+[ext_resource type="Script" path="res://room_sim/ui/hud.gd" id="1_hud"]
+[ext_resource type="PackedScene" uid="uid://b2v8g3ywn7a1p" path="res://room_sim/ui/shader_inspector.tscn" id="2_insp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ring"]
+bg_color = Color(1, 0.6, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.65, 0, 0.95)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prompt"]
+bg_color = Color(0.08, 0.09, 0.14, 0.95)
+border_width_left = 4
+border_width_top = 2
+border_width_right = 4
+border_width_bottom = 2
+border_color = Color(1, 0.6, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 20.0
+expand_margin_top = 10.0
+expand_margin_right = 20.0
+expand_margin_bottom = 10.0
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_topbar"]
+bg_color = Color(0.06, 0.08, 0.12, 0.95)
+border_width_bottom = 3
+border_color = Color(1, 0.6, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mouse_btn"]
+bg_color = Color(0.12, 0.18, 0.28, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.85, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_top = 4.0
+expand_margin_right = 12.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bottombar"]
+bg_color = Color(0.06, 0.08, 0.12, 0.95)
+border_width_top = 3
+border_color = Color(0.2, 0.8, 1, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="ReticleContainer" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Ring" type="Panel" parent="ReticleContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ring")
+
+[node name="Dot" type="ColorRect" parent="ReticleContainer"]
+custom_minimum_size = Vector2(6, 6)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.3, 0.85, 1, 0.9)
+
+[node name="PromptContainer" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PromptPanel" type="PanelContainer" parent="PromptContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_prompt")
+
+[node name="PromptLabel" type="Label" parent="PromptContainer/PromptPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.75, 0.1, 1)
+theme_override_font_sizes/font_size = 22
+text = "▶ [E] OR CLICK: ACCESS SCIENCE STATION ◀"
+
+[node name="TopBar" type="PanelContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_topbar")
+
+[node name="Margin" type="MarginContainer" parent="TopBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 8
+
+[node name="HBox" type="HBoxContainer" parent="TopBar/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LcarsBadge" type="ColorRect" parent="TopBar/Margin/HBox"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+color = Color(1, 0.6, 0, 1)
+
+[node name="BannerLabel" type="Label" parent="TopBar/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.4, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "USS ENTERPRISE • PROCEDURAL GPU PATTERNS SCIENCE LAB"
+vertical_alignment = 1
+
+[node name="MouseToggleBtn" type="Button" parent="TopBar/Margin/HBox"]
+custom_minimum_size = Vector2(360, 38)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_mouse_btn")
+text = "🖱️ MOUSE: VISIBLE (CLICK SCREEN OR TAB TO LOCK)"
+
+[node name="BottomBar" type="PanelContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bottombar")
+
+[node name="Margin" type="MarginContainer" parent="BottomBar"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 8
+
+[node name="KeyHints" type="Label" parent="BottomBar/Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "[WASD / ARROWS] Move   •   [SHIFT] Sprint   •   [SPACE] Jump   •   [E / CLICK] Access Table   •   [TAB] Toggle Mouse Cursor"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShaderInspector" parent="." instance=ExtResource("2_insp")]
+visible = false
